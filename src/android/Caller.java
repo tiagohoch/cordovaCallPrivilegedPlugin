@@ -40,15 +40,15 @@ public static final String ACTION_DIAL_NUMBER = "dialNumber";
                 return false;
             }
 
-            this.makeCall(phoneNumber, callbackContext);
+            return this.makeCall(phoneNumber, callbackContext);
 
-            return true;
+            //return true;
         }
 
         return false;
     }
 
-    private void makeCall(String phoneNumber, final CallbackContext callbackContext) throws JSONException {
+    private boolean makeCall(String phoneNumber, final CallbackContext callbackContext) throws JSONException {
         try {
 
 
