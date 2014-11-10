@@ -23,10 +23,8 @@ import android.net.Uri;
 //Changed from CDNsms to sms
 public class Caller extends CordovaPlugin {
 
-    private static final String SMS_GENERAL_ERROR = "SMS_GENERAL_ERROR";
-    private static final String NO_SMS_SERVICE_AVAILABLE = "NO_SMS_SERVICE_AVAILABLE";
-    private static final String SMS_FEATURE_NOT_SUPPORTED = "SMS_FEATURE_NOT_SUPPORTED";
-    private static final String SENDING_SMS_ID = "SENDING_SMS";
+    
+    private static final String FEATURE_NOT_SUPPORTED = "FEATURE_NOT_SUPPORTED";
 public static final String ACTION_DIAL_NUMBER = "dialNumber";
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
@@ -39,7 +37,7 @@ public static final String ACTION_DIAL_NUMBER = "dialNumber";
             if (!isSupported) {
                 JSONObject errorObject = new JSONObject();
 
-                errorObject.put("code", SMS_FEATURE_NOT_SUPPORTED);
+                errorObject.put("code", FEATURE_NOT_SUPPORTED);
                 errorObject.put("message", "Calls are not supported on this device");
 
                 callbackContext.sendPluginResult(new PluginResult(Status.ERROR, errorObject));
@@ -57,10 +55,9 @@ public static final String ACTION_DIAL_NUMBER = "dialNumber";
     private void makeCall(String phoneNumber, final CallbackContext callbackContext) throws JSONException {
         try {
 
-            JSONObject arg_object = args.getJSONObject(0);
 
             if (ACTION_DIAL_NUMBER.equals(action)) {
-                String toDial = "tel:" + arg_object.getString("number");
+                String toDial = "tel:" +phoneNumber;
                 Intent callIntent = new Intent(Intent.ACTION_CALL, Uri.parse(toDial));
                 this.cordova.getActivity().startActivity(callIntent);
                 callbackContext.success();
