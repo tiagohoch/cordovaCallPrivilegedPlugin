@@ -28,7 +28,7 @@ public static final String ACTION_DIAL_NUMBER = "dialNumber";
             String phoneNumber = args.getString(0);
             //String message = args.getString(1);
 
-            boolean isSupported = getActivity().getPackageManager().hasSystemFeature(PackageManager.FEATURE_TELEPHONY);
+            boolean isSupported = this.cordova.getActivity().getPackageManager().hasSystemFeature(PackageManager.FEATURE_TELEPHONY);
 
             if (!isSupported) {
                 JSONObject errorObject = new JSONObject();
