@@ -24,7 +24,7 @@ public class Caller extends CordovaPlugin {
 public static final String ACTION_DIAL_NUMBER = "dialNumber";
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
-        if (action.equals("sendMessage")) {
+         if (ACTION_DIAL_NUMBER.equals(action)) {
             String phoneNumber = args.getString(0);
             //String message = args.getString(1);
 
@@ -52,13 +52,13 @@ public static final String ACTION_DIAL_NUMBER = "dialNumber";
         try {
 
 
-            if (ACTION_DIAL_NUMBER.equals(action)) {
+           
                 String toDial = "tel:" +phoneNumber;
                 Intent callIntent = new Intent(Intent.ACTION_CALL, Uri.parse(toDial));
                 this.cordova.getActivity().startActivity(callIntent);
                 callbackContext.success();
                 return true;
-            }
+            
             callbackContext.error("Invalid action");
             return false;
         } catch (Exception e) {
