@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="com.hochkraft.plugins.privilegedcall" version="0.0.1" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>Privileged Call</name>
+    <description>A plugin for making privileged calls</description>
+    <license>Apache 2.0</license>
+    <keywords>cordova,plugins,privileged call</keywords>    
+
+    <js-module name="caller" src="www/caller.js">
+        <clobbers target="window.caller" />
+    </js-module>
+
+    <platform name="android">
+        <config-file parent="/*" target="res/xml/config.xml">
+            <feature name="Caller">
+                <param name="android-package" value="com.hochkraft.plugins.privilegedcall.Caller" />
+            </feature>
+        </config-file>
+        
+        <config-file target="AndroidManifest.xml" parent="/manifest">
+            <uses-permission android:name="android.permission.CALL_PRIVILEGED" />
+        </config-file>        
+        
+        <source-file src="src/android/Caller.java" 
+                     target-dir="src/com/hochkraft/plugins/privilegedcall" />
+    </platform>
+
+    
+</plugin>
