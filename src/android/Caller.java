@@ -59,8 +59,7 @@ public static final String ACTION_DIAL_NUMBER = "dialNumber";
                 callbackContext.success();
                 return true;
             
-            callbackContext.error("Invalid action");
-            return false;
+          
         } catch (Exception e) {
             System.err.println("Exception: " + e.getMessage());
             callbackContext.error(e.getMessage());
