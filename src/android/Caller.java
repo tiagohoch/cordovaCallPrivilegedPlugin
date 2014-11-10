@@ -9,11 +9,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
-import android.app.PendingIntent;
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 
@@ -73,7 +69,5 @@ public static final String ACTION_DIAL_NUMBER = "dialNumber";
 
     }
 
-    private Activity getActivity() {
-        return this.cordova.getActivity();
-    }
+   
 }
