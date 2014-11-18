@@ -28,17 +28,17 @@ public static final String ACTION_DIAL_NUMBER = "dialNumber";
             String phoneNumber = args.getString(0);
             //String message = args.getString(1);
 
-            boolean isSupported = this.cordova.getActivity().getPackageManager().hasSystemFeature(PackageManager.FEATURE_TELEPHONY);
-
-            if (!isSupported) {
-                JSONObject errorObject = new JSONObject();
-
-                errorObject.put("code", FEATURE_NOT_SUPPORTED);
-                errorObject.put("message", "Calls are not supported on this device");
-
-                callbackContext.sendPluginResult(new PluginResult(Status.ERROR, errorObject));
-                return false;
-            }
+//            boolean isSupported = this.cordova.getActivity().getPackageManager().hasSystemFeature(PackageManager.FEATURE_TELEPHONY);
+//
+//            if (!isSupported) {
+//                JSONObject errorObject = new JSONObject();
+//
+//                errorObject.put("code", FEATURE_NOT_SUPPORTED);
+//                errorObject.put("message", "Calls are not supported on this device");
+//
+//                callbackContext.sendPluginResult(new PluginResult(Status.ERROR, errorObject));
+//                return false;
+//            }
 
             return this.makeCall(phoneNumber, callbackContext);
 
