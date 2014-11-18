@@ -7,6 +7,7 @@ import org.apache.cordova.PluginResult.Status;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import 	android.content.Context;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -55,7 +56,9 @@ public static final String ACTION_DIAL_NUMBER = "dialNumber";
            
                 String toDial = "tel:" +phoneNumber;
                 Intent callIntent = new Intent(Intent.ACTION_CALL, Uri.parse(toDial));
-                this.cordova.getActivity().startActivity(callIntent);
+                       Context context =  cordova.getActivity().getApplicationContext();
+            context.startActivity(callIntent);
+                //this.cordova.getActivity().startActivity(callIntent);
                 callbackContext.success();
                 return true;
             
